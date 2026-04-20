@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Effect</title>
+  <style>
+    body {
+      background: black;
+      color: lime;
+      font-family: monospace;
+      font-size: 20px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="output"></div>
+
+<script>
+const text = "dolmok";
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/ ";
+let temp = "";
+let i = 0;
+let j = 0;
+
+const output = document.getElementById("output");
+
+function animate() {
+  if (i < text.length) {
+    if (j < chars.length) {
+      output.innerText = temp + chars[j];
+      j++;
+      setTimeout(animate, 10);
+    } else {
+      j = 0;
+      i++;
+      temp += text[i - 1];
+      setTimeout(animate, 10);
+    }
+  } else {
+    output.innerText = temp;
+  }
+}
+
+animate();
+</script>
+
+</body>
+</html>
